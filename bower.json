@@ -1,0 +1,23 @@
+{
+  "name": "slide-push-menu",
+  "repo": "qrator/slide-push-menu",
+  "description": "Fixed menu that slide out from the side or pushes into the page",
+  "version": "0.1.1",
+  "keywords": [
+    "menu"
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "license": "MIT",
+  "main": "menu.js",
+  "scripts": [
+    "menu.js"
+  ],
+  "styles": [
+    "menu.css"
+  ],
+  "ignore": [
+    "**/.*"
+  ]
+}
