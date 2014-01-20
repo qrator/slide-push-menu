@@ -18,7 +18,7 @@
 	SPMenu.open = function() {
 		var $node = $('#cbp-spmenu'),
 			options = $node.data('spmenu');
-		if (options.push) {
+		if (options && options.push) {
 			var position = options.position || 'left';
 			// now reverse
 			position = (position=='left') ? 'right' : 'left';
@@ -30,7 +30,7 @@
 	SPMenu.close = function() {
 		var $node = $('#cbp-spmenu'),
 			options = $node.data('spmenu');
-		if (options.push) {
+		if (options && options.push) {
 			$(options.container || 'body').removeClass('cbp-spmenu-push-toleft').removeClass('cbp-spmenu-push-toright');
 		}
 		$node.removeClass('cbp-spmenu-open').data('spmenu_id', null);
@@ -76,7 +76,13 @@
 
 			for (var i=0; i<items.length; i++) {
 				var item = items[i],
-					$item = $('<a/>').html(item.text).addClass(item.css);
+					$item = $(item.section ? '<h3/>' : '<a/>').html(item.text).addClass(item.css);
+
+				$item.appendTo($node);
+
+				if (item.section) {
+					continue;
+				}
 
 				if (item.href) {
 					$item.attr('href', item.href).attr('target', item.target);
@@ -87,8 +93,7 @@
 				if (item.fn) {
 					$item.on('click', item.fn);
 				}
-
-				$item.appendTo($node);
+				
 			}
 		}
 
